@@ -8,9 +8,6 @@
 #include "matrix.h"
 #include <hardware/gpio.h>
 
-static const uint8_t row_pins[TOTAL_ROWS] = {28, 11, 10, 9, 2, 3, 13, 15}; // GPIO pins for rows
-static const uint8_t col_pins[TOTAL_COLS] = {13, 14, 15, 26, 27, 12, 29, 4, 7, 8, 9, 10, 11, 12}; // GPIO pins for columns
-
 // INIT: Split implementation
 void matrix_init_split(matrix_metadata_t *const metadata) {
   matrix_split_set_metadata(metadata);

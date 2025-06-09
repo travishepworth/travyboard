@@ -1,6 +1,10 @@
 #include "default.h"
 #include "keymap_shorthands.h"
 
+
+const uint8_t row_pins[TOTAL_ROWS] = {28, 11, 10, 9, 2, 3, 13, 15};
+const uint8_t col_pins[TOTAL_COLS] = {13, 14, 15, 26, 27, 12, 29, 4, 7, 8, 9, 10, 11, 12};
+
 const uint8_t keymap_default[TOTAL_LAYERS][TOTAL_ROWS_HALF][TOTAL_COLS] = {
   {
   // |--------|--------|--------|--------|--------|--------|--------|  |--------|--------|--------|--------|--------|--------|--------|

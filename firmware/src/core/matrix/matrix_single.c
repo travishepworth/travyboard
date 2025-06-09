@@ -9,12 +9,6 @@
 #include <hardware/gpio.h>
 #include <string.h>
 
-// These will be defined elsewhere in the code, keeping them here for
-// lsp sanity for now
-// TODO, make this support split keyboards (even scuffed fow now)
-static const uint row_pins[TOTAL_ROWS] = {2, 3, 13, 15}; // GPIO pins for rows
-static const uint col_pins[TOTAL_COLS] = {4, 7, 8, 9, 10, 11, 12}; // GPIO pins for columns
-
 void matrix_init_single(matrix_metadata_t *const metadata) {
   // Init the row pins; set them to output
   for (uint8_t pin_index = 0; pin_index < TOTAL_ROWS; pin_index++) {
