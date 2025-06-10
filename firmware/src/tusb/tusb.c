@@ -87,15 +87,11 @@ void tud_umount_cb(void) { blink_interval_ms = BLINK_NOT_MOUNTED; }
 // Within 7ms, device must draw an average of current less than 2.5 mA from
 // bus
 void tud_suspend_cb(bool remote_wakeup_en) {
-  usb_suspend_state.suspended = true;
-  usb_suspend_state.remote_wakeup_en = remote_wakeup_en;
   blink_interval_ms = BLINK_SUSPENDED;
 }
 
 // Invoked when usb bus is resumed
 void tud_resume_cb(void) {
-  usb_suspend_state.suspended = false;
-  usb_suspend_state.remote_wakeup_en = false;
   blink_interval_ms = BLINK_MOUNTED;
 }
 

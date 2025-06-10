@@ -17,8 +17,6 @@ static debounce_state_t debounce_state;
 static matrix_state_t left_state;
 static uart_report_t uart_report;
 
-extern usb_suspend_state_t *get_usb_suspend_state(void);
-
 int main(void) {
   board_init();
   tusb_init();
@@ -36,7 +34,6 @@ int main(void) {
   while (true) {
     tud_task();
     uint32_t current_ms = board_millis();
-    usb_suspend_state_t *suspend_state = get_usb_suspend_state();
     if (current_ms - start_ms >= interval_ms) {
       start_ms = current_ms;
 
@@ -63,14 +60,6 @@ int main(void) {
       matrix_concatenate(&true_state, &right_state);
 
       // Remote wakeup logic
-      if (suspend_state->suspended && suspend_state->remote_wakeup_en) {
-        for (int i = 0; i < MATRIX_SIZE; ++i) {
-          if (true_state.state[i]) {
-            tud_remote_wakeup();
-            break;
-          }
-        }
-      }
 
       matrix_convert(&true_state); // Extract array of indices from scan
 
@@ -82,6 +71,3 @@ int main(void) {
   }
   return 0;
 };
-
-// TODO: move to tusb.c
-
